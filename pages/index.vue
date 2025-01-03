@@ -1,15 +1,16 @@
 <script setup lang="ts">
-// testing store
-const authStore = useAuthStore();
-
-const input = ref();
-// testing vueuse
-const text = refDebounced(input, 1000);
+useSeoMeta({
+  title: "Welcome",
+});
 </script>
 
 <template>
-  <div>
-    <UInput v-model="input"/>
-    {{ text }}
+  <div class="w-full h-screen flex items-center justify-center">
+    <UCard class="sm:w-[30vw] text-center">
+      <div class="space-y-5">
+        <h1 class="font-bold text-xl">Welcome</h1>
+        <UButton block to="/login" variant="soft" label="Login" />
+      </div>
+    </UCard>
   </div>
 </template>

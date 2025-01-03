@@ -3,21 +3,16 @@ import colors from "tailwindcss/colors";
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   imports: {
-    dirs: [
-      "./constants",
-      "./interfaces",
-      "./interfaces/general",
-      "./services",
-    ],
+    dirs: ["./constants", "./interfaces", "./interfaces/general", "./services"],
   },
-  compatibilityDate: '2024-04-03',
+  app: {
+    head: {
+      titleTemplate: "Wir - %s",
+    },
+  },
+  compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
-  modules: [
-    "@nuxt/ui",
-    "@pinia/nuxt",
-    "@vueuse/nuxt",
-    "dayjs-nuxt",
-  ],
+  modules: ["@nuxt/ui", "@pinia/nuxt", "@vueuse/nuxt", "dayjs-nuxt"],
   // value set from .env
   runtimeConfig: {
     public: {
@@ -68,4 +63,4 @@ export default defineNuxtConfig({
       },
     },
   },
-})
+});

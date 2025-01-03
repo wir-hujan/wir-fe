@@ -1,4 +1,12 @@
 <script setup lang="ts">
+definePageMeta({
+  layout: 'blank',
+});
+
+useSeoMeta({
+  title: "Login",
+});
+
 const toast = useToast();
 
 const authStore = useAuthStore();
