@@ -1,7 +1,5 @@
 import colors from "tailwindcss/colors";
 
-import colors from "tailwindcss/colors";
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   imports: {
