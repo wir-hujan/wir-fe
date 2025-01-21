@@ -39,8 +39,18 @@ export default defineNuxtConfig({
         extend: {
           colors: {
             main: {
-              DEFAULT: colors.blue[500],
-              ...colors.blue,
+              DEFAULT: "#C59B2D",
+              50: "#EBD8A8",
+              100: "#E8D299",
+              200: "#E1C57C",
+              300: "#DAB85F",
+              400: "#D4AB42",
+              500: "#C59B2D",
+              600: "#A88426",
+              700: "#8B6D20",
+              800: "#6E5619",
+              900: "#514012",
+              950: "#42340F",
             },
             success: {
               DEFAULT: colors.green[500],

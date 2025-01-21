@@ -3,10 +3,6 @@ export const useAuthStore = defineStore("auth", () => {
     maxAge: 60 * 60 * 24,
   });
 
-  const refreshToken = useCookie("refresh_token", {
-    maxAge: 60 * 60 * 48,
-  });
-
   const user = ref<Employee>();
 
   const setUser = (payload: Employee) => {
@@ -15,9 +11,8 @@ export const useAuthStore = defineStore("auth", () => {
 
   const destroyData = () => {
     token.value = undefined;
-    refreshToken.value = undefined;
     user.value = undefined;
   };
 
-  return { token, refreshToken, user, setUser, destroyData };
+  return { token, user, setUser, destroyData };
 });
