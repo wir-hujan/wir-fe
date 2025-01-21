@@ -1,5 +1,5 @@
 <template>
-  <UButton variant="ghost" @click="isDark = !isDark">
+  <UButton variant="ghost" color="gray" @click="isDark = !isDark">
     <UIcon
       v-if="isDark"
       name="i-solar-moon-bold"
