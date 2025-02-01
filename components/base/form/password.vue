@@ -1,3 +1,11 @@
+<script setup>
+const model = defineModel({
+  default: "",
+});
+
+const isShow = ref(false);
+</script>
+
 <template>
   <UInput
     v-model="model"
@@ -31,11 +39,3 @@
     </template>
   </UInput>
 </template>
-
-<script setup lang="ts">
-const model = defineModel({
-  default: "",
-});
-
-const isShow = ref(false);
-</script>

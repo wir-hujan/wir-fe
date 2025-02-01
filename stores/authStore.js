@@ -3,9 +3,20 @@ export const useAuthStore = defineStore("auth", () => {
     maxAge: 60 * 60 * 24,
   });
 
-  const user = ref<Employee>();
+  const user = ref({
+    id: null,
+    name: null,
+    username: null,
+    password: null,
+    createdAt: null,
+    createdBy: null,
+    updatedAt: null,
+    updatedBy: null,
+    deletedAt: null,
+    deletedBy: null,
+  });
 
-  const setUser = (payload: Employee) => {
+  const setUser = (payload) => {
     user.value = { ...user.value, ...payload };
   };
 
