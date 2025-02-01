@@ -1,5 +1,24 @@
-<script setup lang="ts">
-const rows = ref([
+<script setup>
+const emit = defineEmits(["reset"]);
+const toast = useToast();
+
+const { params, run } = deleteMarket();
+const { status, execute } = run();
+
+const isModalOpen = ref(false);
+
+const onOpenDeleteModal = (id) => {
+  params.value.id = id;
+  isModalOpen.value = true;
+};
+const onConfirm = async () => {
+  // execute();
+  toast.add({ title: "Market telah dihapus", color: "success" });
+  isModalOpen.value = false;
+  emit("reset");
+};
+
+const rows = [
   {
     id: 1,
     name: "PT Wingsfood",
@@ -18,7 +37,7 @@ const rows = ref([
     },
     is_active: false,
   },
-]);
+];
 
 const columns = [
   {
@@ -34,10 +53,6 @@ const columns = [
     label: "Toko",
   },
   {
-    key: "is_active",
-    label: "Aktif?",
-  },
-  {
     key: "action",
     label: "Aksi",
   },
@@ -45,29 +60,40 @@ const columns = [
 </script>
 
 <template>
-  <UCard :ui="{ body: { padding: '' } }">
-    <UTable :rows :columns>
-      <template #no-data="{ index }">
-        {{ index + 1 }}
+  <div>
+    <UCard :ui="{ body: { padding: '' } }">
+      <UTable :rows :columns>
+        <template #no-data="{ index }">
+          {{ index + 1 }}
+        </template>
+        <template #store-data="{ row }">
+          {{ row.store.name }}
+        </template>
+        <template #action-data="{ row }">
+          <div class="flex items-center gap-2">
+            <UButton
+              :to="`/dashboard/market/${row.id}/edit`"
+              color="info"
+              icon="i-heroicons-pencil-solid"
+            />
+            <UButton
+              color="danger"
+              icon="i-heroicons-trash-solid"
+              @click="onOpenDeleteModal(row.id)"
+            />
+          </div>
+        </template>
+      </UTable>
+    </UCard>
+
+    <BaseModalConfirmation
+      v-model="isModalOpen"
+      :loading="status === 'pending'"
+      @confirm="onConfirm"
+    >
+      <template #description>
+        Apakah anda yakin untuk menghapus data ini?
       </template>
-      <template #store-data="{ row }">
-        {{ row.store.name }}
-      </template>
-      <template #is_active-data="{ row }">
-        <UBadge variant="soft" :color="row.is_active ? 'success' : 'danger'">
-          {{ row.is_active ? "Aktif" : "Tidak Aktif" }}
-        </UBadge>
-      </template>
-      <template #action-data="{ row }">
-        <div class="flex items-center gap-2">
-          <UButton
-            :to="`/dashboard/market/${row.id}`"
-            color="info"
-            icon="i-heroicons-pencil-solid"
-          />
-          <UButton color="danger" icon="i-heroicons-trash-solid" />
-        </div>
-      </template>
-    </UTable>
-  </UCard>
+    </BaseModalConfirmation>
+  </div>
 </template>

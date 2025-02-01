@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 const toast = useToast();
 
 const items = [
@@ -25,6 +25,6 @@ const items = [
 
 <template>
   <UDropdown :items :popper="{ placement: 'bottom-start' }">
-    <UButton variant="ghost" color="gray" icon="i-heroicons-user-solid" label="Tester masbro" />
+    <UButton variant="ghost" color="gray" icon="i-heroicons-user-solid" label="Tester masbro" class="max-sm:w-full" />
   </UDropdown>
 </template>

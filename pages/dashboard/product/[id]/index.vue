@@ -1,3 +1,7 @@
-<script setup lang="ts"></script>
+<script setup>
+useSeoMeta({
+  title: "Detail Product",
+});
+</script>
 
 <template></template>

@@ -1,3 +1,7 @@
-<script setup lang="ts"></script>
+<script setup>
+useSeoMeta({
+  title: "Edit Employee",
+});
+</script>
 
 <template></template>
