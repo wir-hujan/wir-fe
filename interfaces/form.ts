@@ -20,7 +20,3 @@ export interface FormDateRangeOptions {
   start?: FormDateRangeType;
   end?: FormDateRangeType;
 }
-
-export type FormEventSubmit<T extends ISchema<any, any>> = FormSubmitEvent<
-  InferType<T>
->;

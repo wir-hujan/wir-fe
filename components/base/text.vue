@@ -1,4 +1,6 @@
 <script setup lang="ts">
+type TextSize = "xs" | "sm" | "md" | "lg" | "xl";
+
 const props = withDefaults(
   defineProps<{
     text: string;

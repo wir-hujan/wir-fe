@@ -21,7 +21,7 @@ const greetingsUi = {
       </UCard>
 
       <DashboardSellingInformation />
-      <DashboardGeneralAverage class="col-span-4" />
+      <DashboardGeneralAverage class="sm:col-span-2 lg:col-span-4" />
     </section>
 
     <section class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">

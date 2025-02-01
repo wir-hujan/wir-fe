@@ -2,12 +2,12 @@
 const props = defineProps({
   label: {
     type: String,
-    default: "",
+    default: "Toko",
     required: false,
   },
   name: {
     type: String,
-    default: "isActive",
+    default: "store_id",
   },
   required: {
     type: Boolean,
@@ -18,44 +18,37 @@ const props = defineProps({
     type: String,
     default: "",
   },
-  loading: {
-    type: Boolean,
-    default: false,
-  },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
-  noAllOption: {
+  withAllOption: {
     type: Boolean,
     default: false,
   },
 });
 
 const model = defineModel({
-  type: Number,
+  type: [Number, null], // Mengizinkan null sebagai nilai kosong
 });
 
-const options = ACTIVE_OPTIONS;
+const options = [];
 
-onBeforeMount(() => {
-  if (props.noAllOption)
-    options.shift();
-});
+// const { data: options, status } = getStores().run({
+//   transform: (v) => {
+//     return v.data;
+//   },
+// });
 </script>
 
 <template>
   <UFormGroup :name :label="label ?? name" :required>
-    <USelect
+    <USelectMenu
       v-model="model"
       searchable
       :name
-      :options
+      :options="Array.isArray(options) ? options : []"
       :placeholder
-      :loading
-      :disabled
-      option-attribute="label"
-      value-attribute="value"
+      :disabled="status === 'pending'"
+      :loading="status === 'pending'"
+      option-attribute="name"
+      value-attribute="id"
       v-bind="$attrs"
     />
   </UFormGroup>
